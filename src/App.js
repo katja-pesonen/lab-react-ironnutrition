@@ -18,20 +18,26 @@ function App() {
       setFoods(updatedFoods);
     };
 
-    const deleteFood = (id) => {
-      const filteredArray = foods.filter((eachFood) => {
-        return eachFood.id !== id;
-      });
-      setFoods([...filteredArray]);
-    };
+    // const deleteFood = (id) => {
+    //   const filteredArray = foods.filter((eachFood) => {
+    //     return eachFood.id !== id;
+    //   });
+    //   setFoods([...filteredArray]);
+    // };
+
+    const handleDelete = (id) => {   
+      const newFoods = foods.filter(eachFood => eachFood.id !== id);
+          setFoods(newFoods);
+        };
+
 
   return (
     <div className="App">
-       <AddFoodForm addNewFood = {addNewFood} /> 
+       <AddFoodForm className='header' addNewFood = {addNewFood} /> 
 
       <Button> Hide Form / Add New Food </Button>
 
-       <Search searchFood={searchFood} onSearch={setSearchFood}/> 
+       <Search className='header' searchFood={searchFood} onSearch={setSearchFood}/> 
 
       <Divider>Food List</Divider>
 
@@ -44,8 +50,9 @@ function App() {
         .map((elem, i) => {
           return (
             < FoodBox 
-              foods = {elem}
-              key = {elem.name + i}
+              foods={elem}
+              key={elem.name + i}
+              handleDelete={handleDelete}
             />
           )
         })}
