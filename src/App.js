@@ -18,12 +18,12 @@ function App() {
       setFoods(updatedFoods);
     };
 
-    // const deleteFood = (id) => {
-    //   const filteredArray = contacts.filter((eachFood) => {
-    //     return eachFood.id !== id;
-    //   });
-    //   setFoods([...filteredArray]);
-    // };
+    const deleteFood = (id) => {
+      const filteredArray = foods.filter((eachFood) => {
+        return eachFood.id !== id;
+      });
+      setFoods([...filteredArray]);
+    };
 
   return (
     <div className="App">

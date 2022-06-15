@@ -1,9 +1,19 @@
 import { Card, Col, Button } from 'antd';
+// import deleteFood from '../App';
 
 // Iteration 2
 function FoodBox(props) {
 
+
     const {name, image, calories, servings, id} = props.foods
+
+
+    const handleSubmit = ((id) => {     
+      props.deleteFood(id)
+    });
+
+
+
   return (
     <Col>
     <Card
@@ -16,8 +26,8 @@ function FoodBox(props) {
       <p>
         <b>Total Calories: {calories * servings} </b> kcal
       </p>
-      {/* <Button type="primary" key={id}
-          onClick={() => deleteFood(id)}> Delete 🗑️</Button> */}
+      <Button type="primary" key={id}
+          onClick={handleSubmit}> Delete 🗑️</Button>
     </Card>
   </Col>
   );
